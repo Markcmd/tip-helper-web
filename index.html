@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>小费分配助手</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="card hero">
+      <div>
+        <p class="eyebrow">Tip Helper</p>
+        <h1>小费分配助手</h1>
+        <p class="muted">输入总小费和每个人的工时，自动计算 Boss、Kitchen、每小时小费、个人分配和剩余金额。</p>
+      </div>
+      <button id="resetBtn" class="ghost">重置</button>
+    </section>
+
+    <section class="grid">
+      <section class="card">
+        <h2>输入区</h2>
+        <label class="field">
+          <span>Tip Total</span>
+          <input id="tipTotal" type="number" min="0" step="0.01" value="286" />
+        </label>
+
+        <div class="split">
+          <label class="field">
+            <span>Boss %</span>
+            <input id="bossPercent" type="number" min="0" max="100" step="1" value="10" />
+          </label>
+          <label class="field">
+            <span>Kitchen %</span>
+            <input id="kitchenPercent" type="number" min="0" max="100" step="1" value="10" />
+          </label>
+        </div>
+
+        <div class="tableHeader">
+          <h3>员工工时</h3>
+          <button id="addPersonBtn" class="secondary">+ 添加</button>
+        </div>
+        <div class="peopleTable">
+          <div class="row head">
+            <span>Name</span><span>Time</span><span></span>
+          </div>
+          <div id="peopleRows"></div>
+        </div>
+      </section>
+
+      <section class="card result">
+        <h2>结果显示区</h2>
+        <div class="summary">
+          <div><span>Boss</span><strong id="bossTip">$0</strong></div>
+          <div><span>Kitchen</span><strong id="kitchenTip">$0</strong></div>
+          <div><span>Subtotal</span><strong id="subtotal">$0</strong></div>
+          <div><span>Total Hour</span><strong id="totalHours">0</strong></div>
+          <div><span>Tips / h</span><strong id="tipPerHour">$0</strong></div>
+          <div><span>Remaining</span><strong id="remaining">$0</strong></div>
+        </div>
+
+        <h3>个人分配</h3>
+        <div class="payoutTable">
+          <div class="row head"><span>Name</span><span>Tip</span></div>
+          <div id="payoutRows"></div>
+          <div class="row total"><span>Sum</span><strong id="sumPayout">$0</strong></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
