@@ -1,8 +1,8 @@
 const defaultPeople = [
-  { name: "Lin", hours: 8 },
+  { name: "Lin", hours: 0 },
   { name: "Kelli", hours: 0 },
-  { name: "Mark", hours: 6.25 },
-  { name: "Ercos", hours: 4.5 },
+  { name: "Mark", hours: 0 },
+  { name: "Ercos", hours: 0 },
 ];
 
 const state = loadState();
