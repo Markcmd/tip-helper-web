@@ -11,12 +11,12 @@ const el = (id) => document.getElementById(id);
 function loadState() {
   const saved = localStorage.getItem("tip-helper-state");
   if (!saved) {
-    return { tipTotal: 286, bossPercent: 10, kitchenPercent: 10, people: defaultPeople };
+    return { tipTotal: 0, bossPercent: 10, kitchenPercent: 10, people: defaultPeople };
   }
   try {
     return JSON.parse(saved);
   } catch {
-    return { tipTotal: 286, bossPercent: 10, kitchenPercent: 10, people: defaultPeople };
+    return { tipTotal: 0, bossPercent: 10, kitchenPercent: 10, people: defaultPeople };
   }
 }
 
