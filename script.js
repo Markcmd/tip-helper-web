@@ -3,6 +3,7 @@ const defaultPeople = [
   { name: "Kelli", hours: 0 },
   { name: "Mark", hours: 0 },
   { name: "Ercos", hours: 0 },
+  { name: "Aria", hours: 0 },
 ];
 
 const state = loadState();
