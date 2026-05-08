@@ -73,7 +73,7 @@ function loadState() {
 
   if (!saved) {
     return {
-      tipTotal: 0,
+      tipTotal: "",
       bossPercent: 10,
       kitchenPercent: 10,
       people: defaultPeople,
@@ -84,7 +84,7 @@ function loadState() {
     const parsed = JSON.parse(saved);
 
     return {
-      tipTotal: parsed.tipTotal || 0,
+      tipTotal: parsed.tipTotal ?? "",
       bossPercent: parsed.bossPercent || 10,
       kitchenPercent: parsed.kitchenPercent || 10,
       people: Array.isArray(parsed.people)
@@ -93,7 +93,7 @@ function loadState() {
     };
   } catch {
     return {
-      tipTotal: 0,
+      tipTotal: "",
       bossPercent: 10,
       kitchenPercent: 10,
       people: defaultPeople,
@@ -126,7 +126,7 @@ function isCompleteShift(shift) {
 
 function shiftLabel(shift) {
   if (!isCompleteShift(shift)) {
-    return "选择时间段";
+    return "Shift";
   }
 
   return `${slotToTime(shift.startSlot)} - ${slotToTime(shift.endSlot)}`;
@@ -251,10 +251,15 @@ function calculate() {
   const subtotal = tipTotal - bossTip - kitchenTip;
   const totalHours = state.people.reduce((sum, p) => sum + personHours(p), 0);
   const tipPerHour = totalHours > 0 ? subtotal / totalHours : 0;
-  const payouts = state.people.map((p) => ({
-    name: p.name || "Unnamed",
-    tip: roundDown(personHours(p) * tipPerHour),
-  }));
+  const payouts = state.people.map((p) => {
+    const hours = personHours(p);
+
+    return {
+      name: p.name || "Unnamed",
+      hours,
+      tip: roundDown(hours * tipPerHour),
+    };
+  });
   const sumPayout = payouts.reduce((sum, p) => sum + p.tip, 0);
   const remaining = subtotal - sumPayout;
 
@@ -280,14 +285,14 @@ function renderResults(result) {
 }
 
 function update() {
-  state.tipTotal = numberValue(el("tipTotal").value);
+  state.tipTotal = el("tipTotal").value;
   state.bossPercent = numberValue(el("bossPercent").value);
   state.kitchenPercent = numberValue(el("kitchenPercent").value);
   saveState();
   renderResults(calculate());
 }
 
-el("tipTotal").value = state.tipTotal;
+el("tipTotal").value = state.tipTotal === 0 ? "" : state.tipTotal;
 el("bossPercent").value = state.bossPercent;
 el("kitchenPercent").value = state.kitchenPercent;
 

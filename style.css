@@ -84,7 +84,16 @@ button {
 .secondary { background: var(--accent); color: white; }
 .secondary:hover { background: var(--accent-dark); }
 .ghost { background: #eef2ff; color: var(--accent-dark); }
-.delete { background: #fee2e2; color: var(--danger); padding: 8px 10px; }
+.delete {
+  background: #fee2e2;
+  color: var(--danger);
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 9px;
+  font-size: 16px;
+  line-height: 1;
+}
 
 .row {
   display: grid;
@@ -102,8 +111,15 @@ button {
 
 .workHeader,
 .personRow {
-  grid-template-columns: 90px minmax(0, 1fr) 70px 48px;
+  grid-template-columns: 76px minmax(0, 1fr) 52px 34px;
+  column-gap: 8px;
   align-items: start;
+}
+
+.personRow > input {
+  padding: 9px 8px;
+  border-radius: 10px;
+  font-size: 13px;
 }
 
 .shiftGroup {
@@ -116,14 +132,15 @@ button {
 
 .shiftButton {
   width: 100%;
-  padding: 12px 14px;
+  padding: 12px 10px;
   border-radius: 12px;
   border: 1px solid var(--line);
   background: #fff;
   color: var(--text);
   text-align: left;
-  font-size: 16px;
+  font-size: 0.7em;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .shiftButton.empty {
@@ -132,7 +149,7 @@ button {
 }
 
 .hourDisplay {
-  text-align: center;
+  text-align: right;
   font-weight: 700;
   padding-top: 12px;
 }
