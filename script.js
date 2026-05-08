@@ -14,6 +14,7 @@ const defaultPeople = [
   { name: "Kelli", shifts: [createEmptyShift(), createEmptyShift()] },
   { name: "Mark", shifts: [createEmptyShift(), createEmptyShift()] },
   { name: "Ercos", shifts: [createEmptyShift(), createEmptyShift()] },
+  { name: "Aria", shifts: [createEmptyShift(), createEmptyShift()] },
 ];
 
 const state = loadState();
