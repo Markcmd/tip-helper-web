@@ -12,7 +12,7 @@
       <div>
         <p class="eyebrow">Tip Helper</p>
         <h1>小费分配助手</h1>
-        <p class="muted">输入总小费和每个人的工时，自动计算 Boss、Kitchen、每小时小费、个人分配和剩余金额。</p>
+        <p class="muted">输入总小费和每个人的两段工作时间，自动计算 Boss、Kitchen、每小时小费、个人分配和剩余金额。</p>
       </div>
       <button id="resetBtn" class="ghost">重置</button>
     </section>
@@ -37,12 +37,16 @@
         </div>
 
         <div class="tableHeader">
-          <h3>员工工时</h3>
+          <h3>员工时间</h3>
           <button id="addPersonBtn" class="secondary">+ 添加</button>
         </div>
+
         <div class="peopleTable">
-          <div class="row head">
-            <span>Name</span><span>Time</span><span></span>
+          <div class="row head workHeader">
+            <span>Name</span>
+            <span>Work Time</span>
+            <span>Hours</span>
+            <span></span>
           </div>
           <div id="peopleRows"></div>
         </div>
@@ -68,6 +72,39 @@
       </section>
     </section>
   </main>
+
+  <div id="timePickerOverlay" class="timePickerOverlay hidden">
+    <div class="timePickerModal">
+      <div class="timePickerHeader">
+        <h3>选择时间段</h3>
+        <button id="closeTimePickerBtn" class="ghost" type="button">关闭</button>
+      </div>
+
+      <div class="selectedRange">
+        <strong id="selectedRangeText">00:00 - 00:00</strong>
+      </div>
+
+      <label class="sliderField">
+        <span>Start</span>
+        <input id="startSlider" type="range" min="0" max="95" step="1" value="0" />
+        <div class="sliderTicks">
+          <span>0</span><span>3</span><span>6</span><span>9</span><span>12</span><span>15</span><span>18</span><span>21</span><span>24</span>
+        </div>
+      </label>
+
+      <label class="sliderField">
+        <span>End</span>
+        <input id="endSlider" type="range" min="0" max="95" step="1" value="0" />
+        <div class="sliderTicks">
+          <span>0</span><span>3</span><span>6</span><span>9</span><span>12</span><span>15</span><span>18</span><span>21</span><span>24</span>
+        </div>
+      </label>
+
+      <div class="sliderHint">每一格 = 15 分钟。滑动选择开始和结束时间。</div>
+
+      <button id="saveTimePickerBtn" class="secondary" type="button">保存时间段</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
